@@ -4,15 +4,27 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { setUser } from "../../store/features/usersSlice.ts";
+import { useAppDispatch } from "../../store/hooks.ts";
+import { onAuthStateChanged } from "firebase/auth/web-extension";
 
-type Props = {
+interface AuthProps {
   variant: "login" | "signup";
-};
+}
 
-function Auth(props: Props) {
+function Auth(props: AuthProps) {
+  const dispatch = useAppDispatch();
   const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      dispatch(setUser({ id: user.uid, email: user.email }));
+    } else {
+      dispatch(setUser({ id: "", email: "" }));
+    }
   });
 
   function handleCredentials(e: React.ChangeEvent<HTMLInputElement>) {
@@ -29,8 +41,8 @@ function Auth(props: Props) {
           userCredentials.password
         )
           .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user); //Pending
+            const resp = userCredential.user;
+            console.log(resp); //Pending
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -43,8 +55,8 @@ function Auth(props: Props) {
           userCredentials.password
         )
           .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user); //Pending
+            const resp = userCredential.user;
+            console.log(resp); //Pending
           })
           .catch((error) => {
             const errorCode = error.code;
