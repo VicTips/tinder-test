@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { setUser } from "../../store/features/usersSlice.ts";
+import { setUser } from "../../store/slices/usersSlice.ts";
 import { useAppDispatch } from "../../store/hooks.ts";
 import { onAuthStateChanged } from "firebase/auth/web-extension";
 
@@ -23,7 +23,7 @@ function Auth(props: AuthProps) {
     if (user) {
       dispatch(setUser({ id: user.uid, email: user.email }));
     } else {
-      dispatch(setUser({ id: "", email: "" }));
+      dispatch(setUser({ id: null, email: null }));
     }
   });
 
