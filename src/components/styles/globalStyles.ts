@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: background-color 0.5s ease, color 0.5s ease;
     }
     a {
         color: inherit;

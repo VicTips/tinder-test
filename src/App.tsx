@@ -51,7 +51,7 @@ function App() {
               }
             />
             <Route
-              path="/forgotpw"
+              path="/reset"
               element={
                 <AnonymousRoute>
                   <PwdRecovery />

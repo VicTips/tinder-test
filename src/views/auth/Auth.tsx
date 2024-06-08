@@ -115,6 +115,14 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const PwdLink = styled(Link)`
+  color: ${(props) => props.theme.colors.textSecondary80};
+  width: fit-content;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 function Auth(props: AuthProps) {
   const dispatch = useAppDispatch();
   const [userCredentials, setUserCredentials] = useState({
@@ -157,7 +165,7 @@ function Auth(props: AuthProps) {
           .catch((error) => {
             Swal.fire({
               icon: "error",
-              title: `${error.message}`,
+              title: `${error.code}`,
               showConfirmButton: false,
               timer: 4000,
               allowEscapeKey: true,
@@ -180,7 +188,7 @@ function Auth(props: AuthProps) {
           .catch((error) => {
             Swal.fire({
               icon: "error",
-              title: `${error.message}`,
+              title: `${error.code}`,
               showConfirmButton: false,
               timer: 4000,
               allowEscapeKey: true,
@@ -190,7 +198,7 @@ function Auth(props: AuthProps) {
 
   return (
     <Container>
-      <Title>Welcome</Title>
+      <Title>{isLogin ? "Welcome" : "Sign Up"}</Title>
       <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
       <Form onSubmit={(e) => handleSubmit(e)}>
         <FormGroup>
@@ -216,11 +224,11 @@ function Auth(props: AuthProps) {
             type="password"
             name="password"
             placeholder="******"
+            minLength={6}
             required
           />
         </FormGroup>
-        {/* Pending */}
-        {isLogin && <Link to="/forgotpw">Forgot your password?</Link>}
+        {isLogin && <PwdLink to="/reset">Forgot your password?</PwdLink>}
         <SubmitBtn type="submit" value={isLogin ? "Login" : "Sign Up"} />
       </Form>
       {isLogin ? (
