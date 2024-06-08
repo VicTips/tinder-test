@@ -6,12 +6,11 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
         font-family: "DM Sans", sans-serif;
-        background-color: ${(props) => props.theme.colors.bgDark};
         height: 100%;
-        min-height: 100vh;
+        background-color: ${(props) => props.theme.colors.bgDark};
         display: flex;
         justify-content: center;
-        align-items: center
+        align-items: center;
     }
     a {
         color: inherit;

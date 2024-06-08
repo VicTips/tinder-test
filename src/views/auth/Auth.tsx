@@ -83,6 +83,7 @@ const InputField = styled.input`
   line-height: 21.96px;
   color: ${(props) => props.theme.colors.textPrimary};
   margin-bottom: 10px;
+  background-color: ${(props) => props.theme.colors.bgInput};
   &:focus {
     outline: none;
   }

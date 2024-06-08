@@ -10,11 +10,15 @@ import { GlobalStyles } from "./components/styles/globalStyles";
 import { ThemeProvider } from "styled-components";
 import { light } from "./components/styles/themes/light";
 import Auth from "./views/auth/Auth";
+import { dark } from "./components/styles/themes/dark";
+import { useContext } from "react";
+import { ThemeContext } from "./context/ThemeContext";
 
 function App() {
+  const { theme } = useContext(ThemeContext);
   return (
     <AuthContext>
-      <ThemeProvider theme={light}>
+      <ThemeProvider theme={theme === "light" ? light : dark}>
         <GlobalStyles />
         <BrowserRouter>
           <Routes>
