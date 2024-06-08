@@ -6,9 +6,12 @@ declare module "styled-components" {
       bgDark: string;
       bgLight: string;
       bgInput: string;
+      bgMenuBtn: string;
+      bgNavBar: string;
       textPrimary: string;
       textSecondary: string;
       textSecondary80: string;
+      togglebtn: string;
       icon: string;
       label: string;
       border: string;

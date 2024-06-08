@@ -2,6 +2,55 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase/config";
 import { Navigate, NavLink, useOutlet } from "react-router-dom";
 import Swal from "sweetalert2";
+import HomeIcon from "./icons/HomeIcon";
+import SignOutIcon from "./icons/SignOutIcon";
+import HistoryIcon from "./icons/HistoryIcon";
+import styled from "styled-components";
+
+const SignOutBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  width: 59px;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  background-color: transparent;
+  color: #777777;
+  &:hover {
+    background-color: ${(props) => props.theme.colors.bgMenuBtn};
+    color: ${(props) => props.theme.colors.icon};
+  }
+`;
+
+const StyledNavLink = styled(NavLink)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 59px;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  background-color: transparent;
+  color: #777777;
+  &:hover {
+    background-color: ${(props) => props.theme.colors.bgMenuBtn};
+    color: ${(props) => props.theme.colors.icon};
+  }
+  &.active {
+    background-color: ${(props) => props.theme.colors.bgMenuBtn};
+    color: ${(props) => props.theme.colors.icon};
+  }
+`;
+
+const NavBar = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  background-color: ${(props) => props.theme.colors.bgNavBar};
+  padding: 13px 12px;
+  border-radius: 24px;
+  width: 347px;
+`;
 
 function UserInterface() {
   const outlet = useOutlet();
@@ -42,9 +91,18 @@ function UserInterface() {
   return (
     <>
       {outlet || <Navigate to="/home" replace />}
-      <NavLink to="/home">Home</NavLink>
-      <NavLink to="/history">History</NavLink>
-      <button onClick={handleSignOut}>Sign Out</button>
+      {/* Pending */}
+      <NavBar>
+        <StyledNavLink to="/home">
+          <HomeIcon />
+        </StyledNavLink>
+        <StyledNavLink to="/history">
+          <HistoryIcon />
+        </StyledNavLink>
+        <SignOutBtn onClick={handleSignOut}>
+          <SignOutIcon />
+        </SignOutBtn>
+      </NavBar>
     </>
   );
 }
