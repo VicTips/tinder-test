@@ -9,6 +9,7 @@ import { useAppDispatch } from "../../store/hooks.ts";
 import { onAuthStateChanged } from "firebase/auth/web-extension";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Swal from "sweetalert2";
 
 interface AuthProps {
   variant: "login" | "signup";
@@ -143,28 +144,46 @@ function Auth(props: AuthProps) {
           userCredentials.email,
           userCredentials.password
         )
-          .then((userCredential) => {
-            const resp = userCredential.user;
-            console.log(resp); //Pending
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "You're in!",
+              showConfirmButton: false,
+              timer: 2000,
+              allowEscapeKey: true,
+            });
           })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage); //Pending
+            Swal.fire({
+              icon: "error",
+              title: `${error.message}`,
+              showConfirmButton: false,
+              timer: 4000,
+              allowEscapeKey: true,
+            });
           })
       : createUserWithEmailAndPassword(
           auth,
           userCredentials.email,
           userCredentials.password
         )
-          .then((userCredential) => {
-            const resp = userCredential.user;
-            console.log(resp); //Pending
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "You're in!",
+              showConfirmButton: false,
+              timer: 2000,
+              allowEscapeKey: true,
+            });
           })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage); //Pending
+            Swal.fire({
+              icon: "error",
+              title: `${error.message}`,
+              showConfirmButton: false,
+              timer: 4000,
+              allowEscapeKey: true,
+            });
           });
   }
 

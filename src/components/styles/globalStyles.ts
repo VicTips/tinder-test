@@ -9,6 +9,9 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props.theme.colors.bgDark};
         height: 100%;
         min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center
     }
     a {
         color: inherit;
@@ -16,15 +19,5 @@ export const GlobalStyles = createGlobalStyle`
     }
     * {
         box-sizing: border-box;
-    }
-    .root {
-        width:100%;
-        flex: 1
-    }
-    .main-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
     }
 `;
