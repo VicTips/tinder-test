@@ -1,46 +1,63 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Auth from "./components/auth/Auth";
 import { AuthContext } from "./context/AuthContext";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
 import AnonymousRoute from "./components/routes/AnonymousRoute";
 import UserInterface from "./components/UserInterface";
+import Home from "./views/Home";
+import History from "./views/History";
+import PwdRecovery from "./views/PwdRecovery";
+import { GlobalStyles } from "./components/styles/globalStyles";
+import { ThemeProvider } from "styled-components";
+import { light } from "./components/styles/themes/light";
+import Auth from "./views/auth/Auth";
 
 function App() {
   return (
     <AuthContext>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <UserInterface />
-              </ProtectedRoute>
-            }
-          >
-            <Route path="/home" element={<h1>Home</h1>} />
-            <Route path="/history" element={<h1>History</h1>} />
-          </Route>
+      <ThemeProvider theme={light}>
+        <GlobalStyles />
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <UserInterface />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="/home" element={<Home />} />
+              <Route path="/history" element={<History />} />
+            </Route>
 
-          <Route
-            path="/signup"
-            element={
-              <AnonymousRoute>
-                <Auth variant="signup" />
-              </AnonymousRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <AnonymousRoute>
-                <Auth variant="login" />
-              </AnonymousRoute>
-            }
-          />
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </BrowserRouter>
+            <Route
+              path="/signup"
+              element={
+                <AnonymousRoute>
+                  <Auth variant="signup" />
+                </AnonymousRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <AnonymousRoute>
+                  <Auth variant="login" />
+                </AnonymousRoute>
+              }
+            />
+            <Route
+              path="/forgotpw"
+              element={
+                <AnonymousRoute>
+                  <PwdRecovery />
+                </AnonymousRoute>
+              }
+            />
+            <Route path="*" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </AuthContext>
   );
 }
