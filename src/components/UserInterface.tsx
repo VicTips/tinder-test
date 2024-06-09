@@ -52,12 +52,18 @@ const NavBar = styled.nav`
   width: 347px;
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 function UserInterface() {
   const outlet = useOutlet();
   function handleSignOut() {
     Swal.fire({
       title: "Are you sure you want to log out?",
-      icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#1A5BE1",
       cancelButtonColor: "#D36060",
@@ -89,7 +95,7 @@ function UserInterface() {
     });
   }
   return (
-    <>
+    <Container>
       {outlet || <Navigate to="/home" replace />}
       {/* Pending */}
       <NavBar>
@@ -103,7 +109,7 @@ function UserInterface() {
           <SignOutIcon />
         </SignOutBtn>
       </NavBar>
-    </>
+    </Container>
   );
 }
 

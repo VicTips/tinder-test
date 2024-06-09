@@ -12,6 +12,7 @@ const dark: DefaultTheme = {
     textSecondary80: "#FEFEFECC",
     togglebtn: "#222243",
     icon: "#FFFFFF",
+    dislikeIcon: "#FFFFFF",
     label: "#FEFEFE",
     border: "#FFFFFF0F",
   },

@@ -1,7 +1,8 @@
 import { createContext, useState } from "react";
+
 const ThemeContext = createContext(null);
 
-function ThemeContextProvider(props: any) {
+function ThemeContextProvider({ children }: any) {
   const [theme, setTheme] = useState(
     !localStorage.getItem("theme") ? "dark" : localStorage.getItem("theme")
   );
@@ -14,10 +15,13 @@ function ThemeContextProvider(props: any) {
 
   localStorage.setItem("theme", theme);
 
+  const values = {
+    theme: theme,
+    toggleTheme: toggleTheme,
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme: theme, toggleTheme: toggleTheme }}>
-      {props.children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
   );
 }
 

@@ -13,6 +13,7 @@ declare module "styled-components" {
       textSecondary80: string;
       togglebtn: string;
       icon: string;
+      dislikeIcon: string;
       label: string;
       border: string;
     };

@@ -12,6 +12,7 @@ const light: DefaultTheme = {
     textSecondary80: "#232232CC",
     togglebtn: "#FFFFFF",
     icon: "#1A5BE1",
+    dislikeIcon: "#D36060",
     label: "#3C3C3C",
     border: "#0000000F",
   },
