@@ -91,6 +91,18 @@ const DislikeBtn = styled.button`
   }
 `;
 
+const LikeIconContainer = styled.div`
+  width: 36.45px;
+  display: flex;
+  align-items: center;
+`;
+
+const DislikeIconContainer = styled.div`
+  width: 19.43px;
+  display: flex;
+  align-items: center;
+`;
+
 const BtnsContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -123,10 +135,14 @@ const Home = () => {
       </ImgContainer>
       <BtnsContainer>
         <DislikeBtn onClick={() => addSportLike(user.uid, false)}>
-          <CloseIcon />
+          <DislikeIconContainer>
+            <CloseIcon />
+          </DislikeIconContainer>
         </DislikeBtn>
         <LikeBtn onClick={() => addSportLike(user.uid, true)}>
-          <HeartIcon />
+          <LikeIconContainer>
+            <HeartIcon />
+          </LikeIconContainer>
         </LikeBtn>
       </BtnsContainer>
     </>

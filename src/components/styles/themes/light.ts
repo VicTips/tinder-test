@@ -7,6 +7,7 @@ const light: DefaultTheme = {
     bgInput: "#FFFFFF",
     bgMenuBtn: "#F5F5F5",
     bgNavBar: "#FFFFFF",
+    bgLikeCard: "#FFFFFF",
     textPrimary: "#161617",
     textSecondary: "#232232",
     textSecondary80: "#232232CC",
@@ -15,6 +16,8 @@ const light: DefaultTheme = {
     dislikeIcon: "#D36060",
     label: "#3C3C3C",
     border: "#0000000F",
+    cardLikeIcon: "#2067F8",
+    cardDislikeIcon: "#EA596F",
   },
 };
 

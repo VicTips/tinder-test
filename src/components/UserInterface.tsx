@@ -49,9 +49,11 @@ const NavBar = styled.nav`
   background-color: ${(props) => props.theme.colors.bgNavBar};
   padding: 13px 12px;
   border-radius: 24px;
-  width: 347px;
-  position: absolute;
+  max-width: 347px;
+  width: 80%;
+  position: sticky;
   bottom: 20px;
+  margin: 0 auto;
 `;
 
 const Container = styled.div`
@@ -60,7 +62,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-bottom: 145px;
+  height: 100%;
 `;
 
 const UserInterface = () => {
@@ -101,7 +103,6 @@ const UserInterface = () => {
   return (
     <Container>
       {outlet || <Navigate to="/home" replace />}
-      {/* Pending */}
       <NavBar>
         <StyledNavLink to="/home">
           <HomeIcon />

@@ -6,10 +6,10 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
         font-family: "DM Sans", sans-serif;
-        height: 100%;
-        display: flex;
+        /* height: 100%; */
+        /* display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; */
     }
     body {
         background-color: ${(props) => props.theme.colors.bgDark};

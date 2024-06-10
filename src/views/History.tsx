@@ -1,6 +1,9 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { SportContext } from "../context/SportsContextProvider";
+import LeftArrowIcon from "../components/icons/LeftArrowIcon";
+import { useNavigate } from "react-router-dom";
+import SportLikes from "../components/SportLikes";
 
 const Title = styled.h1`
   font-weight: 700;
@@ -8,23 +11,53 @@ const Title = styled.h1`
   line-height: 51.25px;
   letter-spacing: -0.05rem;
   color: ${(props) => props.theme.colors.textPrimary};
+  text-align: start;
+  width: 100%;
+  margin: 18px 0 0;
+`;
+
+const Text = styled.p`
+  opacity: 0.8;
+  font-family: "Epilogue", sans-serif;
+  font-size: 18px;
+  line-height: 26.64px;
+  color: ${(props) => props.theme.colors.textSecondary};
+  width: 100%;
+  max-width: 322px;
+  margin: 8px auto 8px 0;
+  text-align: start;
+`;
+
+const BackBtn = styled.button`
+  border: none;
+  color: ${(props) => props.theme.colors.textSecondary};
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+const Container = styled.div`
+  padding: 54px 32px;
 `;
 
 const History = () => {
-  const { loadingSportLikes, sportLikes }: any = useContext(SportContext);
-  console.log(sportLikes);
-
-  const groupedArray = sportLikes.length
-    ? Object.groupBy(sportLikes, ({ sportId }: any) => sportId)
-    : null;
-
-  console.log(groupedArray);
+  const navigate = useNavigate();
+  const { loadingSportLikes, sportLikes, sports }: any =
+    useContext(SportContext);
 
   return (
-    <>
+    <Container>
+      <BackBtn onClick={() => navigate(-1)}>
+        <LeftArrowIcon />
+      </BackBtn>
       <Title>History</Title>
-      {loadingSportLikes ? "Spinner" : <p>Hola</p>}
-    </>
+      <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+      {loadingSportLikes ? (
+        "Spinner"
+      ) : (
+        <SportLikes sportLikes={sportLikes} sports={sports} />
+      )}
+    </Container>
   );
 };
 export default History;

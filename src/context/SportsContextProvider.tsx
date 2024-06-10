@@ -1,6 +1,13 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+  orderBy,
+} from "firebase/firestore";
 import { db } from "../firebase/config";
 import { UserContext } from "./AuthContext";
 
@@ -53,7 +60,11 @@ const SportContextProvider = ({ children }: any) => {
 
   const getSportLikes = async (userId: string) => {
     const sportLikesRef = collection(db, "sportLikes");
-    const q = query(sportLikesRef, where("userId", "==", userId));
+    const q = query(
+      sportLikesRef,
+      where("userId", "==", userId),
+      orderBy("createdAt", "desc")
+    );
     const qs = await getDocs(q);
     const sportLikes: any = [];
     qs.forEach((doc) => {

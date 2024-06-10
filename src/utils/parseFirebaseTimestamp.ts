@@ -1,5 +1,5 @@
 export const parseFirebaseTimestamp = (createdAt: any) => {
-  new Date(
+  return new Date(
     createdAt.seconds * 1000 + createdAt.nanoseconds / 1000000
-  ).toDateString();
+  ).toLocaleDateString("en-US", { day: "numeric", month: "long" });
 };
