@@ -14,6 +14,12 @@ const History = () => {
   const { loadingSportLikes, sportLikes }: any = useContext(SportContext);
   console.log(sportLikes);
 
+  const groupedArray = sportLikes.length
+    ? Object.groupBy(sportLikes, ({ sportId }: any) => sportId)
+    : null;
+
+  console.log(groupedArray);
+
   return (
     <>
       <Title>History</Title>
