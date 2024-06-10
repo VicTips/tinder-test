@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { SportContext } from "../context/SportsContextProvider";
 import LeftArrowIcon from "../components/icons/LeftArrowIcon";
 import { useNavigate } from "react-router-dom";
@@ -38,6 +38,28 @@ const BackBtn = styled.button`
 
 const Container = styled.div`
   padding: 54px 32px;
+  max-width: 390px;
+  width: 100%;
+`;
+const rotate = keyframes`
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+`;
+
+const Spinner = styled.span`
+  width: 48px;
+  height: 48px;
+  border: 5px solid ${(props) => props.theme.colors.textPrimary};
+  border-bottom-color: ${(props) => props.theme.colors.cardDislikeIcon};
+  border-radius: 50%;
+  display: block;
+  box-sizing: border-box;
+  animation: ${rotate} 1s linear infinite;
+  margin-top: 16px;
 `;
 
 const History = () => {
@@ -53,7 +75,7 @@ const History = () => {
       <Title>History</Title>
       <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
       {loadingSportLikes ? (
-        "Spinner"
+        <Spinner />
       ) : (
         <SportLikes sportLikes={sportLikes} sports={sports} />
       )}

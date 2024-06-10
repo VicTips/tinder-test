@@ -121,10 +121,7 @@ const BtnsContainer = styled.div`
   flex: none;
 `;
 
-const Container = styled.div`
-  /* display: flex;
-  flex-direction: column; */
-`;
+const Container = styled.div``;
 
 const Home = () => {
   const { user }: any = useContext(UserContext);

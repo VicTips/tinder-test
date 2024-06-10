@@ -54,6 +54,7 @@ const NavBar = styled.nav`
   position: fixed;
   bottom: 20px;
   margin: 0 auto;
+  z-index: 1;
 `;
 
 const Container = styled.div`

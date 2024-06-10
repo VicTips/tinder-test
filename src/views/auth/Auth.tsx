@@ -4,9 +4,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { setUser } from "../../store/slices/usersSlice.ts";
-import { useAppDispatch } from "../../store/hooks.ts";
-import { onAuthStateChanged } from "firebase/auth/web-extension";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Swal from "sweetalert2";
@@ -124,21 +121,12 @@ const PwdLink = styled(Link)`
 `;
 
 const Auth = (props: AuthProps) => {
-  const dispatch = useAppDispatch();
   const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
   });
 
   const isLogin = props.variant === "login";
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      dispatch(setUser({ id: user.uid, email: user.email }));
-    } else {
-      dispatch(setUser({ id: null, email: null }));
-    }
-  });
 
   const handleCredentials = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });

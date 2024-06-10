@@ -83,6 +83,16 @@ const SportLikeCardReactionDislikeIcon = styled.div`
   align-items: center;
 `;
 
+const EmptyMsg = styled.p`
+  opacity: 0.8;
+  font-size: 18px;
+  line-height: 26.64px;
+  color: ${(props) => props.theme.colors.textPrimary};
+  width: 100%;
+  text-align: center;
+  padding-top: 30px;
+`;
+
 const SportLikes = ({ sportLikes, sports }: any) => {
   const groupedLikesByDate = sportLikes.length
     ? Object.groupBy(sportLikes, ({ createdAt }: any) =>
@@ -137,7 +147,7 @@ const SportLikes = ({ sportLikes, sports }: any) => {
       </SportLikesContainer>
     );
   } else {
-    return <p>Empty</p>;
+    return <EmptyMsg>You don't have a history yet!</EmptyMsg>;
   }
 };
 
