@@ -29,6 +29,10 @@ const SportImg = styled.img`
   border: 1px solid ${(props) => props.theme.colors.bgDark};
   object-fit: cover;
   border-radius: 32px;
+  @media (max-width: 390px) {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
 `;
 
 const ImgContainer = styled.div`
@@ -36,8 +40,12 @@ const ImgContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 390px;
-  aspect-ratio: 65/94;
   overflow: hidden;
+  aspect-ratio: 65/94;
+  @media (max-width: 390px) {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -108,7 +116,14 @@ const BtnsContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 22px;
-  padding-top: 47px;
+  padding: 47px 0 125px;
+  height: fit-content;
+  flex: none;
+`;
+
+const Container = styled.div`
+  /* display: flex;
+  flex-direction: column; */
 `;
 
 const Home = () => {
@@ -116,7 +131,7 @@ const Home = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { sports, index, addSportLike } = useContext(SportContext);
   return (
-    <>
+    <Container>
       <ImgContainer>
         <ToggleBtn onClick={toggleTheme}>
           {theme === "light" ? "🌙" : "🌤️"}
@@ -145,7 +160,7 @@ const Home = () => {
           </LikeIconContainer>
         </LikeBtn>
       </BtnsContainer>
-    </>
+    </Container>
   );
 };
 export default Home;

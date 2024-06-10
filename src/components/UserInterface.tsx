@@ -51,17 +51,17 @@ const NavBar = styled.nav`
   border-radius: 24px;
   max-width: 347px;
   width: 80%;
-  position: sticky;
+  position: fixed;
   bottom: 20px;
   margin: 0 auto;
 `;
 
 const Container = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
   height: 100%;
 `;
 
