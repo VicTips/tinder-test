@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/AuthContext";
 
-function AnonymousRoute({ children }: any) {
+const AnonymousRoute = ({ children }: any) => {
   const { user }: any = useContext(UserContext);
 
   if (user) {
@@ -10,6 +10,6 @@ function AnonymousRoute({ children }: any) {
   } else {
     return children;
   }
-}
+};
 
 export default AnonymousRoute;

@@ -1,4 +1,4 @@
-function HeartIcon() {
+const HeartIcon = () => {
   return (
     <svg
       width="38"
@@ -15,6 +15,6 @@ function HeartIcon() {
       />
     </svg>
   );
-}
+};
 
 export default HeartIcon;

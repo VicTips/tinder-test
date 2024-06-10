@@ -63,9 +63,9 @@ const Container = styled.div`
   padding-bottom: 145px;
 `;
 
-function UserInterface() {
+const UserInterface = () => {
   const outlet = useOutlet();
-  function handleSignOut() {
+  const handleSignOut = () => {
     Swal.fire({
       title: "Are you sure you want to log out?",
       showCancelButton: true,
@@ -97,7 +97,7 @@ function UserInterface() {
           });
       }
     });
-  }
+  };
   return (
     <Container>
       {outlet || <Navigate to="/home" replace />}
@@ -115,6 +115,6 @@ function UserInterface() {
       </NavBar>
     </Container>
   );
-}
+};
 
 export default UserInterface;

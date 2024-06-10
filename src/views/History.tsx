@@ -23,7 +23,7 @@ const getSportLikes = async (userId: string) => {
   return sportLikes;
 };
 
-function History() {
+const History = () => {
   const { user }: any = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const [sportLikes, setSportLikes] = useState([]);
@@ -42,5 +42,5 @@ function History() {
       {loading ? "Spinner" : <p>Hola</p>}
     </>
   );
-}
+};
 export default History;

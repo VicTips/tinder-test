@@ -104,14 +104,14 @@ const StyledLink = styled(Link)`
   }
 `;
 
-function PwdRecovery() {
+const PwdRecovery = () => {
   const [email, setEmail] = useState("");
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-  }
+  };
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     sendPasswordResetEmail(auth, email)
       .then(() => {
@@ -132,7 +132,7 @@ function PwdRecovery() {
           allowEscapeKey: true,
         });
       });
-  }
+  };
 
   return (
     <Container>
@@ -162,5 +162,5 @@ function PwdRecovery() {
       </FormFooter>
     </Container>
   );
-}
+};
 export default PwdRecovery;

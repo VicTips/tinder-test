@@ -1,4 +1,4 @@
-function HomeIcon() {
+const HomeIcon = () => {
   return (
     <svg
       width="19"
@@ -13,6 +13,6 @@ function HomeIcon() {
       />
     </svg>
   );
-}
+};
 
 export default HomeIcon;

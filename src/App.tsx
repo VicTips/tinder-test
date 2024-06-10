@@ -14,7 +14,7 @@ import { dark } from "./components/styles/themes/dark";
 import { useContext } from "react";
 import { ThemeContext } from "./context/ThemeContext";
 
-function App() {
+const App = () => {
   const { theme } = useContext(ThemeContext);
   return (
     <AuthContext>
@@ -64,6 +64,6 @@ function App() {
       </ThemeProvider>
     </AuthContext>
   );
-}
+};
 
 export default App;

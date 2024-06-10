@@ -1,4 +1,4 @@
-function HistoryIcon() {
+const HistoryIcon = () => {
   return (
     <svg
       width="19"
@@ -13,6 +13,6 @@ function HistoryIcon() {
       />
     </svg>
   );
-}
+};
 
 export default HistoryIcon;

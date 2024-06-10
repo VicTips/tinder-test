@@ -5,7 +5,7 @@ import { db } from "../firebase/config";
 
 const SportContext = createContext(null);
 
-function SportContextProvider({ children }: any) {
+const SportContextProvider = ({ children }: any) => {
   const [sports, setSports] = useState([]);
   const [index, setIndex] = useState(
     !localStorage.getItem("index") ? 0 : parseInt(localStorage.getItem("index"))
@@ -59,6 +59,6 @@ function SportContextProvider({ children }: any) {
       {!loading && children}
     </SportContext.Provider>
   );
-}
+};
 
 export { SportContextProvider, SportContext };

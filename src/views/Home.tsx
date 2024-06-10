@@ -99,7 +99,7 @@ const BtnsContainer = styled.div`
   padding-top: 47px;
 `;
 
-function Home() {
+const Home = () => {
   const { user }: any = useContext(UserContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { sports, index, addSportLike } = useContext(SportContext);
@@ -131,5 +131,5 @@ function Home() {
       </BtnsContainer>
     </>
   );
-}
+};
 export default Home;

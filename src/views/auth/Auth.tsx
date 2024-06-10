@@ -123,7 +123,7 @@ const PwdLink = styled(Link)`
   }
 `;
 
-function Auth(props: AuthProps) {
+const Auth = (props: AuthProps) => {
   const dispatch = useAppDispatch();
   const [userCredentials, setUserCredentials] = useState({
     email: "",
@@ -140,11 +140,11 @@ function Auth(props: AuthProps) {
     }
   });
 
-  function handleCredentials(e: React.ChangeEvent<HTMLInputElement>) {
+  const handleCredentials = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
-  }
+  };
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     isLogin
@@ -194,7 +194,7 @@ function Auth(props: AuthProps) {
               allowEscapeKey: true,
             });
           });
-  }
+  };
 
   return (
     <Container>
@@ -246,6 +246,6 @@ function Auth(props: AuthProps) {
       )}
     </Container>
   );
-}
+};
 
 export default Auth;
