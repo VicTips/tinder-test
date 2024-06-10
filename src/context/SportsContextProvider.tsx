@@ -1,5 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase/config";
 
 const SportContext = createContext(null);
 
@@ -33,12 +35,23 @@ function SportContextProvider({ children }: any) {
     );
   };
 
+  const addSportLike = (userId: string, like: boolean) => {
+    const sportLikesCol = collection(db, "sportLikes");
+    addDoc(sportLikesCol, {
+      userId,
+      like,
+      sportId: sports[index].idSport,
+      createdAt: new Date(),
+    });
+    nextSport();
+  };
+
   localStorage.setItem("index", index.toString());
 
   const values = {
     sports: sports,
     index: index,
-    nextSport: nextSport,
+    addSportLike: addSportLike,
   };
 
   return (

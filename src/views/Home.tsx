@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { SportContext } from "../context/SportsContextProvider";
 import HeartIcon from "../components/icons/HeartIcon";
 import CloseIcon from "../components/icons/CloseIcon";
+import { UserContext } from "../context/AuthContext";
 
 const ToggleBtn = styled.button`
   cursor: pointer;
@@ -95,12 +96,13 @@ const BtnsContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 22px;
-  padding: 47px 0;
+  padding-top: 47px;
 `;
 
 function Home() {
+  const { user }: any = useContext(UserContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const { sports, index, nextSport } = useContext(SportContext);
+  const { sports, index, addSportLike } = useContext(SportContext);
   return (
     <>
       <ImgContainer>
@@ -120,10 +122,10 @@ function Home() {
         </TitleContainer>
       </ImgContainer>
       <BtnsContainer>
-        <DislikeBtn onClick={nextSport}>
+        <DislikeBtn onClick={() => addSportLike(user.uid, false)}>
           <CloseIcon />
         </DislikeBtn>
-        <LikeBtn onClick={nextSport}>
+        <LikeBtn onClick={() => addSportLike(user.uid, true)}>
           <HeartIcon />
         </LikeBtn>
       </BtnsContainer>

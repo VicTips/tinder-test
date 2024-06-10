@@ -50,6 +50,8 @@ const NavBar = styled.nav`
   padding: 13px 12px;
   border-radius: 24px;
   width: 347px;
+  position: absolute;
+  bottom: 20px;
 `;
 
 const Container = styled.div`
@@ -57,6 +59,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  padding-bottom: 145px;
 `;
 
 function UserInterface() {
