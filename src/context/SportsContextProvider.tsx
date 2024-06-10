@@ -1,7 +1,8 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { createContext, useContext, useEffect, useState } from "react";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { UserContext } from "./AuthContext";
 
 const SportContext = createContext(null);
 
@@ -48,10 +49,39 @@ const SportContextProvider = ({ children }: any) => {
 
   localStorage.setItem("index", index.toString());
 
+  const { user }: any = useContext(UserContext);
+
+  const getSportLikes = async (userId: string) => {
+    const sportLikesRef = collection(db, "sportLikes");
+    const q = query(sportLikesRef, where("userId", "==", userId));
+    const qs = await getDocs(q);
+    const sportLikes: any = [];
+    qs.forEach((doc) => {
+      sportLikes.push({ id: doc.id, ...doc.data() });
+    });
+    return sportLikes;
+  };
+
+  const [loadingSportLikes, setLoadingSportLikes] = useState(true);
+  const [sportLikes, setSportLikes] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      getSportLikes(user.uid)
+        .then(setSportLikes)
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => setLoadingSportLikes(false));
+    }
+  }, [user, index]);
+
   const values = {
     sports: sports,
     index: index,
     addSportLike: addSportLike,
+    loadingSportLikes,
+    sportLikes,
   };
 
   return (
